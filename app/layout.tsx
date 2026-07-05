@@ -4,23 +4,26 @@ import "./globals.css";
 
 const display = Chakra_Petch({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700"],
   variable: "--font-display",
   display: "swap",
+  preload: true,
 });
 
 const body = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
+  preload: true,
 });
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["500"],
   variable: "--font-mono",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

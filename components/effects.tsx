@@ -18,12 +18,14 @@ import {
 } from "react";
 
 /* ---------- Global cursor-follow glow ---------- */
+const GLOW = 420;
+
 export function CursorGlow() {
   const [enabled, setEnabled] = useState(false);
-  const x = useMotionValue(-500);
-  const y = useMotionValue(-500);
-  const sx = useSpring(x, { stiffness: 320, damping: 40, mass: 0.4 });
-  const sy = useSpring(y, { stiffness: 320, damping: 40, mass: 0.4 });
+  const x = useMotionValue(-9999);
+  const y = useMotionValue(-9999);
+  const sx = useSpring(x, { stiffness: 260, damping: 34, mass: 0.5 });
+  const sy = useSpring(y, { stiffness: 260, damping: 34, mass: 0.5 });
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -31,8 +33,8 @@ export function CursorGlow() {
     if (reduce || !fine) return;
     setEnabled(true);
     const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
+      x.set(e.clientX - GLOW / 2);
+      y.set(e.clientY - GLOW / 2);
     };
     window.addEventListener("mousemove", move, { passive: true });
     return () => window.removeEventListener("mousemove", move);
@@ -42,13 +44,16 @@ export function CursorGlow() {
   return (
     <motion.div
       aria-hidden
-      className="pointer-events-none fixed z-[55] h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+      className="pointer-events-none fixed left-0 top-0 z-[55] rounded-full"
       style={{
-        left: sx,
-        top: sy,
+        x: sx,
+        y: sy,
+        width: GLOW,
+        height: GLOW,
         background:
-          "radial-gradient(circle, rgba(124,58,237,0.14), rgba(59,130,246,0.08) 40%, transparent 70%)",
+          "radial-gradient(circle, rgba(124,58,237,0.13), rgba(59,130,246,0.07) 40%, transparent 70%)",
         mixBlendMode: "screen",
+        willChange: "transform",
       }}
     />
   );

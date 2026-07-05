@@ -11,9 +11,9 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export default function Hero() {
   const reduce = useReducedMotion();
   const rise = (delay: number) => ({
-    initial: reduce ? { opacity: 0 } : { opacity: 0, y: 24 },
+    initial: reduce ? { opacity: 0 } : { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease, delay },
+    transition: { duration: 0.55, ease, delay },
   });
 
   return (
@@ -29,7 +29,6 @@ export default function Hero() {
         {/* aurora glows */}
         <div className="absolute left-1/2 top-[-10%] h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-electric/20 blur-[130px]" />
         <div className="absolute bottom-[-20%] left-[8%] h-[380px] w-[380px] rounded-full bg-violet-brand/25 blur-[120px]" />
-        <div className="absolute right-[6%] top-[30%] h-[320px] w-[320px] rounded-full bg-electric-cyan/15 blur-[110px]" />
         {/* vignette + bottom fade into next section */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,6,9,0.7)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink-950" />
@@ -52,7 +51,7 @@ export default function Hero() {
 
         {/* wordmark */}
         <motion.h1
-          {...rise(0.14)}
+          {...rise(0.1)}
           className="mt-8 select-none font-display font-700 leading-[0.92] tracking-tight"
         >
           <span
@@ -66,7 +65,7 @@ export default function Hero() {
 
         {/* tagline */}
         <motion.p
-          {...rise(0.26)}
+          {...rise(0.18)}
           className="mx-auto mt-6 max-w-3xl text-balance font-display text-[clamp(1.35rem,3.4vw,2.6rem)] font-500 leading-[1.15]"
         >
           The World&apos;s Largest{" "}
@@ -75,7 +74,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.p
-          {...rise(0.34)}
+          {...rise(0.24)}
           className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/55"
         >
           Connecting and teaching the generation that will lead the future of
@@ -85,7 +84,7 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div
-          {...rise(0.44)}
+          {...rise(0.32)}
           className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Magnetic>
@@ -108,7 +107,7 @@ export default function Hero() {
 
         {/* scroll cue */}
         <motion.div
-          {...rise(0.6)}
+          {...rise(0.42)}
           className="mt-16 flex items-center justify-center"
         >
           <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/15 p-1.5">

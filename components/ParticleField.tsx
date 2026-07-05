@@ -6,8 +6,8 @@ type Node = { x: number; y: number; vx: number; vy: number };
 
 export default function ParticleField({
   className = "",
-  density = 0.00009,
-  maxNodes = 140,
+  density = 0.00006,
+  maxNodes = 85,
 }: {
   className?: string;
   density?: number;
