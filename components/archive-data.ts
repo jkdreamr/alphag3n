@@ -32,6 +32,17 @@ export type EventPage = {
   stats?: { value: string; label: string }[];
   extraSections?: { kicker?: string; title?: string; body: string }[];
   people?: { group: string; members: Person[] }[];
+  cardGroups?: {
+    kicker: string;
+    intro?: string;
+    cards: {
+      label?: string;
+      title: string;
+      subtitle?: string;
+      body: string;
+      image: string;
+    }[];
+  }[];
   schedule?: { day?: string; time: string; title: string; body?: string }[];
   faqs?: { q: string; a: string }[];
   gallery?: string[];
@@ -67,8 +78,8 @@ export type NewsPage = {
     date?: string;
     heading?: string;
     body: string;
+    images?: string[];
   }[];
-  gallery?: string[];
 };
 
 export type ArchivePage = EventPage | BlogPage | NewsPage;
@@ -263,14 +274,56 @@ export const ARCHIVE: Record<string, ArchivePage> = {
       },
       { value: "04", label: "Japanese schools" },
     ],
-    extraSections: [
+    cardGroups: [
       {
         kicker: "Three Panels",
-        title: "ALPHAG3N Workshops",
-        body: "This session centers around the goal of inspiring Japanese high schoolers to become problem-solvers in their communities while exercising responsibility and caution with their use of AI. The ALPHAG3N team designed three interactive, 1-hour workshops to provide students with actionable frameworks and strategies to carry forward with them in their education and daily life.",
+        cards: [
+          {
+            label: "Session 1",
+            title: "Brian Koo",
+            body: "The hidden power behind ChatGPT and AI",
+            image: "/assets/archive/doshisha-conference-2025/01.webp",
+          },
+          {
+            label: "Session 2",
+            title: "Dr. Mandana Khalili",
+            body: "Health disparity research and applications in Japan",
+            image: "/assets/archive/doshisha-conference-2025/02.webp",
+          },
+          {
+            label: "Session 3",
+            title: "ALPHAG3N Team",
+            body: "Discussion about the American education system and our experiences with projects",
+            image: "/assets/archive/doshisha-conference-2025/03.webp",
+          },
+        ],
+      },
+      {
+        kicker: "ALPHAG3N Workshops",
+        intro:
+          "This session centers around the goal of inspiring Japanese high schoolers to become problem-solvers in their communities while exercising responsibility and caution with their use of AI. The ALPHAG3N team designed three interactive, 1-hour workshops to provide students with actionable frameworks and strategies to carry forward with them in their education and daily life.",
+        cards: [
+          {
+            title: "How to Identify and Build Research Skills Through Projects",
+            subtitle: "Led by Kian Salimi",
+            body: "Based on a framework developed by Kian Salimi for high school students to acquire independent research skills. With a focus on encouraging students to approach passion projects with intentionality—first clearly identifying the skills they want to learn, then constructing a roadmap of checkpoints and self-assessments, and finally designing a project around skills rather than external metrics—this workshop teaches an innovative, student-centered approach to learning outside the classroom.",
+            image: "/assets/archive/doshisha-conference-2025/04.webp",
+          },
+          {
+            title: "Design Engineering for Social Innovation",
+            subtitle: "Led by Shayan Salimi and Aidin Salimi",
+            body: "Shayan and Aidin created a healthcare communication app to address the needs of patients and physicians in their community. This hands-on workshop uses examples from their journey coupled with interactive activities to explore how design thinking can be used to address real-world social challenges. Students will engage in activities such as needfinding, ideation, prototyping, and testing to develop innovative, human-centered solutions that make a meaningful impact.",
+            image: "/assets/archive/doshisha-conference-2025/05.webp",
+          },
+          {
+            title: "Applications of AI in Healthcare and Ethics of AI",
+            subtitle: "Led by Max Spivakovsky and Daniel Koo",
+            body: "The recent popularity of generative AI by student populations has sparked debate as to the potential role of AI in learning, which Max and Daniel have grappled with throughout high school. This workshop will not only touch on the ethics of AI in the academic community but also involve an interactive segment on building AI models from scratch. Students will use radiology images to train an AI model and iterate the model architecture based on its performance, giving students a glimpse into the process of implementing AI in healthcare. All levels of experience are welcome!",
+            image: "/assets/archive/doshisha-conference-2025/06.webp",
+          },
+        ],
       },
     ],
-    gallery: g("doshisha-conference-2025", 6),
   },
 
   "seoul-conference-2024": {
@@ -411,13 +464,14 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         date: "June 29th, 2023",
         heading: "TheWaveSeoul Conference",
         body: "TheWaveSeoul conference is a premier tech in Seoul, South Korea for those who are interested in the latest advancement in future technology, especially Web3 and AI.\n\nJoshua Koo, founder and lead of ALPHAG3N, participated as the only high-schooler at TheWaveSeoul Conference in Korea, where he presented about how the MZ and younger generations are reacting to technologies such as Web3 and AI.\n\nJoshua had roughly 35 minutes to present and there were around 200 participants, ranging from entrepreneurs to news reporters to prominent figures in the Web3 and AI industries.",
+        images: g("news", 12),
       },
       {
         title: "TheMiilk Interview",
         body: "Joshua Koo, founder and lead of ALPHAG3N, was interviewed by the digital media platform based in Silicon Valley, TheMiilk. Following a deep dive into his background as a student and tech enthusiast, he expressed his thoughts on the current scene in AI and Web3 and the impact it will have on the younger (future) generation. The image on the right is linked to the interview.",
+        images: pick("news", [13]),
       },
     ],
-    gallery: g("news", 13),
   },
 };
 

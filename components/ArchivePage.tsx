@@ -48,14 +48,16 @@ function PageHero({
               alt=""
               fill
               priority
-              className="object-cover opacity-40"
+              className="object-cover opacity-95"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/80 to-ink-950" />
+            {/* readability scrims — dark on the text side + bottom fade, image stays clearly visible */}
+            <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/45 to-ink-950/10" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/10 to-transparent" />
           </>
         ) : (
-          <div className="aurora absolute inset-0 opacity-50" />
+          <div className="aurora absolute inset-0 opacity-60" />
         )}
-        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-40" />
+        <div className="absolute inset-0 bg-grid bg-grid-fade opacity-25" />
         <Meteors count={12} />
       </div>
 
@@ -82,7 +84,7 @@ function PageHero({
 
         <AnimatedHeading
           as="h1"
-          className="mt-5 max-w-4xl font-display text-[clamp(2.1rem,5.5vw,4rem)] font-700 leading-[1.03] text-white"
+          className="mt-5 max-w-4xl font-display text-[clamp(2.1rem,5.5vw,4rem)] font-700 leading-[1.03] text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.6)]"
           parts={[{ text: name }]}
         />
 
@@ -325,6 +327,59 @@ function EventView({ p }: { p: EventPage }) {
           </section>
         ))}
 
+      {p.cardGroups &&
+        p.cardGroups.map((grp) => (
+          <section key={grp.kicker} className="shell py-10">
+            <Reveal>
+              <div className="flex justify-center">
+                <Kicker>{grp.kicker}</Kicker>
+              </div>
+            </Reveal>
+            {grp.intro && (
+              <Reveal delay={0.06}>
+                <p className="mx-auto mt-5 max-w-3xl text-center text-[15px] leading-relaxed text-white/70">
+                  {grp.intro}
+                </p>
+              </Reveal>
+            )}
+            <StaggerGroup className="mt-8 grid gap-5 md:grid-cols-3">
+              {grp.cards.map((c) => (
+                <motion.div key={c.title + c.image} variants={staggerItem}>
+                  <SpotlightCard className="glass ring-gradient flex h-full flex-col overflow-hidden rounded-3xl">
+                    <div className="group relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={c.image}
+                        alt={c.title}
+                        fill
+                        sizes="(max-width:768px) 90vw, 31vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col p-6 text-center">
+                      {c.label && (
+                        <div className="font-mono text-[11px] uppercase tracking-[0.2em] text-electric-cyan">
+                          {c.label}
+                        </div>
+                      )}
+                      <h3 className="mt-2 font-display text-lg font-700 text-white">
+                        {c.title}
+                      </h3>
+                      {c.subtitle && (
+                        <div className="mt-1 text-sm text-white/50">
+                          {c.subtitle}
+                        </div>
+                      )}
+                      <p className="mt-4 text-[13px] leading-relaxed text-white/60">
+                        {c.body}
+                      </p>
+                    </div>
+                  </SpotlightCard>
+                </motion.div>
+              ))}
+            </StaggerGroup>
+          </section>
+        ))}
+
       {p.eligibility && (
         <section className="shell py-10">
           <Reveal>
@@ -504,46 +559,66 @@ function NewsView({ p }: { p: NewsPage }) {
   return (
     <>
       <PageHero kicker="News" name={p.name} tagline={p.tagline} hero={p.hero} />
-      <section className="shell space-y-10 py-6">
+      <section className="shell space-y-16 py-6">
         {p.items.map((item) => (
-          <Reveal key={item.title}>
-            <div className="glass ring-gradient rounded-3xl p-7 sm:p-9">
-              {(item.location || item.date) && (
-                <div className="flex flex-wrap gap-2">
-                  {item.location && (
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70">
-                      <Pin className="h-3.5 w-3.5 text-electric-cyan" />
-                      {item.location}
-                    </span>
-                  )}
-                  {item.date && (
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70">
-                      {item.date}
-                    </span>
-                  )}
+          <div key={item.title}>
+            <Reveal>
+              <div className="glass ring-gradient rounded-3xl p-7 sm:p-9">
+                {(item.location || item.date) && (
+                  <div className="flex flex-wrap gap-2">
+                    {item.location && (
+                      <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70">
+                        <Pin className="h-3.5 w-3.5 text-electric-cyan" />
+                        {item.location}
+                      </span>
+                    )}
+                    {item.date && (
+                      <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70">
+                        {item.date}
+                      </span>
+                    )}
+                  </div>
+                )}
+                <h2 className="mt-4 font-display text-2xl font-700 leading-tight text-white">
+                  {item.title}
+                </h2>
+                {item.heading && (
+                  <div className="mt-5 font-display text-lg font-600 text-electric-cyan">
+                    {item.heading}
+                  </div>
+                )}
+                <div className="mt-3 max-w-3xl space-y-4 leading-relaxed text-white/65">
+                  {item.body.split("\n\n").map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
                 </div>
-              )}
-              <h2 className="mt-4 font-display text-2xl font-700 leading-tight text-white">
-                {item.title}
-              </h2>
-              {item.heading && (
-                <div className="mt-5 font-display text-lg font-600 text-electric-cyan">
-                  {item.heading}
-                </div>
-              )}
-              <div className="mt-3 max-w-3xl space-y-4 leading-relaxed text-white/65">
-                {item.body.split("\n\n").map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+
+            {item.images && item.images.length > 0 && (
+              <Reveal delay={0.05}>
+                <div className="mt-5 columns-1 gap-4 sm:columns-2 lg:columns-3">
+                  {item.images.map((src, i) => (
+                    <div
+                      key={src}
+                      className="ring-gradient group relative mb-4 block break-inside-avoid overflow-hidden rounded-2xl border border-white/10"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt={`${item.title} photo ${i + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+          </div>
         ))}
       </section>
-
-      {p.gallery && p.gallery.length > 0 && (
-        <PhotoGallery images={p.gallery} name="ALPHAG3N news" />
-      )}
       <BackBar />
     </>
   );
