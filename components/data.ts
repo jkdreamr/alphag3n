@@ -13,23 +13,23 @@ export const LINKS = {
 };
 
 export const NAV_SECTIONS = [
-  { label: "Vision", href: "#vision" },
-  { label: "Services", href: "#services" },
-  { label: "Events", href: "#events" },
-  { label: "Sponsors", href: "#sponsors" },
-  { label: "Contact", href: "#contact" },
+  { label: "Vision", href: "/#vision" },
+  { label: "Services", href: "/#services" },
+  { label: "Events", href: "/#events" },
+  { label: "Sponsors", href: "/#sponsors" },
+  { label: "Contact", href: "/#contact" },
 ];
 
-// Original navigation menu items preserved exactly
+// Archive / conference pages — internal routes
 export const NAV_ARCHIVE = [
-  { label: "Taiwan Conference 2026", href: LINKS.site },
-  { label: "Stanford Hackathon 2026", href: LINKS.applyHackathon },
-  { label: "Doshisha Conference 2025", href: LINKS.site },
-  { label: "Seoul Conference 2024", href: LINKS.site },
-  { label: "SNU Conference 2023", href: LINKS.site },
-  { label: "Stanford Conference 2023", href: LINKS.stanford },
-  { label: "Blogs", href: LINKS.site },
-  { label: "News", href: LINKS.site },
+  { label: "Taiwan Conference 2026", href: "/taiwan-conference-2026" },
+  { label: "Stanford Hackathon 2026", href: "/stanford-hackathon-2026" },
+  { label: "Doshisha Conference 2025", href: "/doshisha-conference-2025" },
+  { label: "Seoul Conference 2024", href: "/seoul-conference-2024" },
+  { label: "SNU Conference 2023", href: "/snu-conference-2023" },
+  { label: "Stanford Conference 2023", href: "/stanford-conference-2023" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "News", href: "/news" },
 ];
 
 export const SERVICES = [

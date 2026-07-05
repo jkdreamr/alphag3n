@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { NAV_SECTIONS, NAV_ARCHIVE, LINKS } from "./data";
 import { ArrowUpRight } from "./icons";
 
 function Wordmark({ onClick }: { onClick?: () => void }) {
   return (
-    <a
-      href="#top"
+    <Link
+      href="/#top"
       onClick={onClick}
       className="group font-display text-lg font-700 tracking-[0.24em] text-white"
       aria-label="ALPHAG3N home"
@@ -18,7 +19,7 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
         3
       </span>
       N
-    </a>
+    </Link>
   );
 }
 
@@ -84,7 +85,7 @@ export default function Navbar() {
                 const id = item.href.replace("#", "");
                 const isActive = active === id;
                 return (
-                  <a
+                  <Link
                     key={item.href}
                     href={item.href}
                     className={`relative rounded-full px-3.5 py-2 text-sm transition-colors ${
@@ -99,7 +100,7 @@ export default function Navbar() {
                       />
                     )}
                     {item.label}
-                  </a>
+                  </Link>
                 );
               })}
 
@@ -134,16 +135,14 @@ export default function Navbar() {
                     >
                       <div className="glass ring-gradient overflow-hidden rounded-2xl p-2">
                         {NAV_ARCHIVE.map((item) => (
-                          <a
+                          <Link
                             key={item.label}
                             href={item.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+                            className="group/link flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
                           >
                             {item.label}
-                            <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
-                          </a>
+                            <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover/link:opacity-100" />
+                          </Link>
                         ))}
                       </div>
                     </motion.div>
@@ -218,17 +217,15 @@ export default function Navbar() {
               </p>
               <div className="mt-3 flex flex-col gap-1">
                 {NAV_ARCHIVE.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
                     href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
                     onClick={() => setOpen(false)}
                     className="flex items-center justify-between py-2 text-white/60"
                   >
                     {item.label}
                     <ArrowUpRight className="h-4 w-4" />
-                  </a>
+                  </Link>
                 ))}
               </div>
               <a
