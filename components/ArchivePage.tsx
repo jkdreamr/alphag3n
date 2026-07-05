@@ -298,6 +298,33 @@ function EventView({ p }: { p: EventPage }) {
         </section>
       )}
 
+      {p.extraSections &&
+        p.extraSections.map((sec, i) => (
+          <section key={i} className="shell py-10">
+            <div className="max-w-3xl">
+              {sec.kicker && (
+                <Reveal>
+                  <Kicker>{sec.kicker}</Kicker>
+                </Reveal>
+              )}
+              {sec.title && (
+                <Reveal delay={0.06}>
+                  <h3 className="mt-4 font-display text-2xl font-700 text-white sm:text-3xl">
+                    {sec.title}
+                  </h3>
+                </Reveal>
+              )}
+              {sec.body && (
+                <Reveal delay={0.12}>
+                  <p className="mt-4 text-[17px] leading-relaxed text-white/75">
+                    {sec.body}
+                  </p>
+                </Reveal>
+              )}
+            </div>
+          </section>
+        ))}
+
       {p.eligibility && (
         <section className="shell py-10">
           <Reveal>
@@ -354,31 +381,38 @@ function EventView({ p }: { p: EventPage }) {
         </section>
       )}
 
-      {p.speakers && p.speakers.length > 0 && (
-        <section className="shell py-12">
-          <Reveal>
-            <Kicker>Speakers, Mentors &amp; Judges</Kicker>
-          </Reveal>
-          <StaggerGroup className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {p.speakers.map((src, i) => (
-              <motion.div key={src} variants={staggerItem}>
-                <SpotlightCard className="glass ring-gradient overflow-hidden rounded-2xl">
-                  <div className="group relative aspect-square overflow-hidden">
-                    <Image
-                      src={src}
-                      alt={`${p.name} speaker ${i + 1}`}
-                      fill
-                      sizes="(max-width:640px) 45vw, 20vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                  </div>
-                </SpotlightCard>
-              </motion.div>
-            ))}
-          </StaggerGroup>
-        </section>
-      )}
+      {p.people &&
+        p.people.map((grp) => (
+          <section key={grp.group} className="shell py-10">
+            <Reveal>
+              <Kicker>{grp.group}</Kicker>
+            </Reveal>
+            <StaggerGroup className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {grp.members.map((m) => (
+                <motion.div key={m.name + m.image} variants={staggerItem}>
+                  <SpotlightCard className="glass ring-gradient flex h-full flex-col overflow-hidden rounded-3xl">
+                    <div className="group relative aspect-[4/5] overflow-hidden">
+                      <Image
+                        src={m.image}
+                        alt={m.name}
+                        fill
+                        sizes="(max-width:640px) 90vw, (max-width:1024px) 45vw, 23vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent" />
+                      <h4 className="absolute inset-x-0 bottom-0 p-4 font-display text-lg font-700 leading-tight text-white">
+                        {m.name}
+                      </h4>
+                    </div>
+                    <p className="whitespace-pre-line p-5 text-[13px] leading-relaxed text-white/60">
+                      {m.bio}
+                    </p>
+                  </SpotlightCard>
+                </motion.div>
+              ))}
+            </StaggerGroup>
+          </section>
+        ))}
 
       {p.gallery && p.gallery.length > 0 && <PhotoGallery images={p.gallery} name={p.name} />}
 
@@ -492,9 +526,16 @@ function NewsView({ p }: { p: NewsPage }) {
               <h2 className="mt-4 font-display text-2xl font-700 leading-tight text-white">
                 {item.title}
               </h2>
-              <p className="mt-4 max-w-3xl leading-relaxed text-white/65">
-                {item.body}
-              </p>
+              {item.heading && (
+                <div className="mt-5 font-display text-lg font-600 text-electric-cyan">
+                  {item.heading}
+                </div>
+              )}
+              <div className="mt-3 max-w-3xl space-y-4 leading-relaxed text-white/65">
+                {item.body.split("\n\n").map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
             </div>
           </Reveal>
         ))}
