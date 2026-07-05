@@ -344,9 +344,26 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         body: "An introduction about the conference and ALPHAG3N was presented, followed by brief talks from a few sponsors.",
       },
     ],
+    people: [
+      {
+        group: "Speakers",
+        members: [
+          {
+            name: "Sanchan Saxena",
+            bio: "Former VP of Products @ Coinbase\nFormer General Manager & Head of Product Management @ Airbnb\nFormer Founder & Head of Product @ Instagram Shopping",
+            image: "/assets/archive/stanford-conference-2023/18.webp",
+          },
+          {
+            name: "Ejaaz Ahamadeen",
+            bio: "Member of The Blockchain Association of New Jersey\nFormer Product Manager @ Coinbase\nFormer Global Lead @ ConsenSys\nFormer Technology Consultant @ Deloitte",
+            image: "/assets/archive/stanford-conference-2023/19.webp",
+          },
+        ],
+      },
+    ],
     gallery: pick(
       "stanford-conference-2023",
-      [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19]
+      [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
     ),
     showSponsors: true,
   },
