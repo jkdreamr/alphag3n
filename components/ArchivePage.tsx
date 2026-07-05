@@ -145,6 +145,37 @@ function BackBar() {
   );
 }
 
+/* ---------- masonry photo gallery ---------- */
+function PhotoGallery({ images, name }: { images: string[]; name: string }) {
+  return (
+    <section className="shell py-12">
+      <Reveal>
+        <Kicker>Photos</Kicker>
+      </Reveal>
+      <Reveal delay={0.05}>
+        <div className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3">
+          {images.map((src, i) => (
+            <div
+              key={src}
+              className="ring-gradient group relative mb-4 block break-inside-avoid overflow-hidden rounded-2xl border border-white/10"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                alt={`${name} photo ${i + 1}`}
+                loading="lazy"
+                decoding="async"
+                className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-950/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
+          ))}
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
 /* ---------- event page ---------- */
 function EventView({ p }: { p: EventPage }) {
   const kind = /hackathon/i.test(p.name) ? "Hackathon" : "Conference";
@@ -323,32 +354,33 @@ function EventView({ p }: { p: EventPage }) {
         </section>
       )}
 
-      {p.gallery && p.gallery.length > 0 && (
+      {p.speakers && p.speakers.length > 0 && (
         <section className="shell py-12">
           <Reveal>
-            <Kicker>Photos</Kicker>
+            <Kicker>Speakers, Mentors &amp; Judges</Kicker>
           </Reveal>
-          <StaggerGroup className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {p.gallery.map((src, i) => (
-              <motion.div
-                key={src}
-                variants={staggerItem}
-                className={`ring-gradient group relative overflow-hidden rounded-2xl border border-white/10 ${
-                  p.gallery!.length === 1 ? "sm:col-span-2 lg:col-span-3" : ""
-                }`}
-              >
-                <Image
-                  src={src}
-                  alt={`${p.name} photo ${i + 1}`}
-                  width={800}
-                  height={600}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+          <StaggerGroup className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {p.speakers.map((src, i) => (
+              <motion.div key={src} variants={staggerItem}>
+                <SpotlightCard className="glass ring-gradient overflow-hidden rounded-2xl">
+                  <div className="group relative aspect-square overflow-hidden">
+                    <Image
+                      src={src}
+                      alt={`${p.name} speaker ${i + 1}`}
+                      fill
+                      sizes="(max-width:640px) 45vw, 20vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                  </div>
+                </SpotlightCard>
               </motion.div>
             ))}
           </StaggerGroup>
         </section>
       )}
+
+      {p.gallery && p.gallery.length > 0 && <PhotoGallery images={p.gallery} name={p.name} />}
 
       {p.faqs && (
         <section className="shell py-12">
@@ -469,28 +501,7 @@ function NewsView({ p }: { p: NewsPage }) {
       </section>
 
       {p.gallery && p.gallery.length > 0 && (
-        <section className="shell py-8">
-          <Reveal>
-            <Kicker>Gallery</Kicker>
-          </Reveal>
-          <StaggerGroup className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {p.gallery.map((src, i) => (
-              <motion.div
-                key={src}
-                variants={staggerItem}
-                className="ring-gradient group relative overflow-hidden rounded-2xl border border-white/10"
-              >
-                <Image
-                  src={src}
-                  alt={`ALPHAG3N news photo ${i + 1}`}
-                  width={800}
-                  height={600}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </motion.div>
-            ))}
-          </StaggerGroup>
-        </section>
+        <PhotoGallery images={p.gallery} name="ALPHAG3N news" />
       )}
       <BackBar />
     </>

@@ -7,6 +7,10 @@ const g = (slug: string, n: number) =>
     (_, i) => `/assets/archive/${slug}/${String(i + 1).padStart(2, "0")}.webp`
   );
 
+// pick specific image numbers (used to exclude decorative/stock frames)
+const pick = (slug: string, nums: number[]) =>
+  nums.map((n) => `/assets/archive/${slug}/${String(n).padStart(2, "0")}.webp`);
+
 export type EventPage = {
   kind: "event";
   slug: string;
@@ -27,6 +31,7 @@ export type EventPage = {
   schedule?: { day?: string; time: string; title: string; body?: string }[];
   faqs?: { q: string; a: string }[];
   gallery?: string[];
+  speakers?: string[];
   showSponsors?: boolean;
 };
 
@@ -160,7 +165,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         a: "No — a problem statement is provided to all teams immediately following the official hackathon kickoff. All projects must be started after the designated time.",
       },
     ],
-    gallery: g("stanford-hackathon-2026", 17),
+    speakers: pick("stanford-hackathon-2026", [3, 4, 5, 6, 7, 8, 9, 10, 11]),
     showSponsors: true,
   },
 
@@ -272,7 +277,10 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         body: "An introduction about the conference and ALPHAG3N was presented, followed by brief talks from a few sponsors.",
       },
     ],
-    gallery: g("stanford-conference-2023", 19),
+    gallery: pick(
+      "stanford-conference-2023",
+      [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19]
+    ),
     showSponsors: true,
   },
 
