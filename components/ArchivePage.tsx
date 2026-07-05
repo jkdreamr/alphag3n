@@ -391,7 +391,20 @@ function BlogView({ p }: { p: BlogPage }) {
         <StaggerGroup className="grid gap-5 md:grid-cols-2">
           {p.posts.map((post) => (
             <motion.article key={post.title} variants={staggerItem}>
-              <SpotlightCard className="glass ring-gradient flex h-full flex-col rounded-3xl p-7">
+              <SpotlightCard className="glass ring-gradient flex h-full flex-col overflow-hidden rounded-3xl">
+                {post.image && (
+                  <div className="group relative -mx-px -mt-px overflow-hidden border-b border-white/10">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={800}
+                      height={420}
+                      className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-900/60 to-transparent" />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-7">
                 <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-white/40">
                   <span>{post.date}</span>
                   <span>·</span>
@@ -409,6 +422,7 @@ function BlogView({ p }: { p: BlogPage }) {
                   </span>
                   <span className="text-sm text-white/70">{post.author}</span>
                 </div>
+                </div>
               </SpotlightCard>
             </motion.article>
           ))}
@@ -424,55 +438,60 @@ function NewsView({ p }: { p: NewsPage }) {
   return (
     <>
       <PageHero kicker="News" name={p.name} tagline={p.tagline} hero={p.hero} />
-      <section className="shell space-y-14 py-6">
-        {p.items.map((item, idx) => (
+      <section className="shell space-y-10 py-6">
+        {p.items.map((item) => (
           <Reveal key={item.title}>
-            <div className="grid items-center gap-8 lg:grid-cols-2">
-              <div className={idx % 2 === 1 ? "lg:order-2" : ""}>
-                {(item.location || item.date) && (
-                  <div className="flex flex-wrap gap-2">
-                    {item.location && (
-                      <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-white/70">
-                        <Pin className="h-3.5 w-3.5 text-electric-cyan" />
-                        {item.location}
-                      </span>
-                    )}
-                    {item.date && (
-                      <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs text-white/70">
-                        {item.date}
-                      </span>
-                    )}
-                  </div>
-                )}
-                <h2 className="mt-4 font-display text-2xl font-700 leading-tight text-white">
-                  {item.title}
-                </h2>
-                <p className="mt-4 leading-relaxed text-white/65">{item.body}</p>
-              </div>
-              {item.images && item.images.length > 0 && (
-                <div
-                  className={`grid gap-4 ${item.images.length > 1 ? "grid-cols-2" : "grid-cols-1"} ${idx % 2 === 1 ? "lg:order-1" : ""}`}
-                >
-                  {item.images.map((src, i) => (
-                    <div
-                      key={src}
-                      className="ring-gradient group overflow-hidden rounded-2xl border border-white/10"
-                    >
-                      <Image
-                        src={src}
-                        alt={`${item.title} ${i + 1}`}
-                        width={600}
-                        height={450}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  ))}
+            <div className="glass ring-gradient rounded-3xl p-7 sm:p-9">
+              {(item.location || item.date) && (
+                <div className="flex flex-wrap gap-2">
+                  {item.location && (
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70">
+                      <Pin className="h-3.5 w-3.5 text-electric-cyan" />
+                      {item.location}
+                    </span>
+                  )}
+                  {item.date && (
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70">
+                      {item.date}
+                    </span>
+                  )}
                 </div>
               )}
+              <h2 className="mt-4 font-display text-2xl font-700 leading-tight text-white">
+                {item.title}
+              </h2>
+              <p className="mt-4 max-w-3xl leading-relaxed text-white/65">
+                {item.body}
+              </p>
             </div>
           </Reveal>
         ))}
       </section>
+
+      {p.gallery && p.gallery.length > 0 && (
+        <section className="shell py-8">
+          <Reveal>
+            <Kicker>Gallery</Kicker>
+          </Reveal>
+          <StaggerGroup className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {p.gallery.map((src, i) => (
+              <motion.div
+                key={src}
+                variants={staggerItem}
+                className="ring-gradient group relative overflow-hidden rounded-2xl border border-white/10"
+              >
+                <Image
+                  src={src}
+                  alt={`ALPHAG3N news photo ${i + 1}`}
+                  width={800}
+                  height={600}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </motion.div>
+            ))}
+          </StaggerGroup>
+        </section>
+      )}
       <BackBar />
     </>
   );

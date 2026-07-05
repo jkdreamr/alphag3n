@@ -1,4 +1,11 @@
 // Content for archive / sub-pages, copied from the ALPHAG3N Wix site.
+// Images live under /assets/archive/<slug>/hero.webp + NN.webp (galleries).
+
+const g = (slug: string, n: number) =>
+  Array.from(
+    { length: n },
+    (_, i) => `/assets/archive/${slug}/${String(i + 1).padStart(2, "0")}.webp`
+  );
 
 export type EventPage = {
   kind: "event";
@@ -35,6 +42,7 @@ export type BlogPage = {
     date: string;
     read: string;
     excerpt: string;
+    image?: string;
   }[];
 };
 
@@ -52,6 +60,7 @@ export type NewsPage = {
     body: string;
     images?: string[];
   }[];
+  gallery?: string[];
 };
 
 export type ArchivePage = EventPage | BlogPage | NewsPage;
@@ -66,7 +75,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     status: "Upcoming",
     date: "August 9th, 2026 · 10 AM – 5 PM TST",
     location: "Taipei FuHsing Private School",
-    hero: "/assets/archive/taiwan-hero.png",
+    hero: "/assets/archive/taiwan-conference-2026/hero.webp",
     comingSoon: true,
     highlights: [
       {
@@ -90,7 +99,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     status: "Completed",
     date: "May 23rd – 24th, 2026 · 8:30 AM – 9:00 PM",
     location: "Stanford University, California",
-    hero: "/assets/archive/shack-hero.jpg",
+    hero: "/assets/archive/stanford-hackathon-2026/hero.webp",
     prize: {
       amount: "$5,000 in Prizes",
       note: "Raffle prizes included free merchandise, gift cards, and software licenses — plus the opportunity to meet with VC founders among other perks!",
@@ -151,6 +160,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         a: "No — a problem statement is provided to all teams immediately following the official hackathon kickoff. All projects must be started after the designated time.",
       },
     ],
+    gallery: g("stanford-hackathon-2026", 17),
     showSponsors: true,
   },
 
@@ -164,7 +174,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     status: "Completed",
     date: "July 14th, 2025 · 10 AM – 2:30 PM JST",
     location: "Doshisha International Junior and Senior High School, Kyoto, Japan",
-    hero: "/assets/archive/doshisha-hero.png",
+    hero: "/assets/archive/doshisha-conference-2025/hero.webp",
     intro:
       "ALPHAG3N at Doshisha aimed to educate students on the transformative role of AI in healthcare, fostering a deeper understanding through expert talks and hands-on learning, while also promoting cultural exchange and global networking.",
     highlights: [
@@ -187,14 +197,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
       { value: "04", label: "Japanese schools" },
       { value: "3", label: "Interactive panels" },
     ],
-    gallery: [
-      "/assets/archive/doshisha-1.png",
-      "/assets/archive/doshisha-2.png",
-      "/assets/archive/doshisha-3.png",
-      "/assets/archive/doshisha-4.png",
-      "/assets/archive/doshisha-5.png",
-      "/assets/archive/doshisha-6.png",
-    ],
+    gallery: g("doshisha-conference-2025", 6),
   },
 
   "seoul-conference-2024": {
@@ -208,7 +211,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     date: "July 18th, 2024 · 6 PM – 8 PM KST",
     location: "LIKELION HQ",
     partner: "In partnership with LIKELION and CODETREE",
-    hero: "/assets/archive/seoul24-hero.jpg",
+    hero: "/assets/archive/seoul-conference-2024/hero.webp",
     intro:
       "The ALPHAG3N team presented! Our panel session focused on the usage and development of AI in American high school education. We offered firsthand insights into our personal experiences with AI used in classes, internships, and individual projects — extending the discussion to the evolving role of AI in school curricula and why ethics is so important.",
     highlights: [
@@ -225,10 +228,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         body: "Discussion on the usefulness of AI and AI ethics in the lives of U.S. high school and college students.",
       },
     ],
-    gallery: [
-      "/assets/archive/seoul24-1.jpg",
-      "/assets/archive/seoul24-2.jpg",
-    ],
+    gallery: g("seoul-conference-2024", 24),
   },
 
   "snu-conference-2023": {
@@ -240,12 +240,8 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     status: "Completed",
     date: "August 8th, 2023",
     location: "Seoul National University",
-    hero: "/assets/archive/snu-hero.png",
-    gallery: [
-      "/assets/archive/snu-1.png",
-      "/assets/archive/snu-2.png",
-      "/assets/archive/snu-3.png",
-    ],
+    hero: "/assets/archive/snu-conference-2023/hero.webp",
+    gallery: g("snu-conference-2023", 3),
   },
 
   "stanford-conference-2023": {
@@ -257,7 +253,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     status: "Completed",
     date: "April 23rd, 2023",
     location: "Stanford University, California",
-    hero: "/assets/stanford-campus.jpeg",
+    hero: "/assets/archive/stanford-conference-2023/hero.webp",
     intro:
       "In-person participants took on the role of ALPHAG3N's first ambassadors — after the conference, it was their job to help grow the ALPHAG3N community. Participants received free silver-tier NFTs and plenty of merch (t-shirts, hats, tote bags, stickers, and more). Workshop participants received participation prizes and special access to a future ALPHAG3N-led hackathon with big prizes.",
     prize: {
@@ -276,7 +272,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         body: "An introduction about the conference and ALPHAG3N was presented, followed by brief talks from a few sponsors.",
       },
     ],
-    gallery: ["/assets/archive/sconf-banner.jpg"],
+    gallery: g("stanford-conference-2023", 19),
     showSponsors: true,
   },
 
@@ -292,6 +288,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         author: "Leo Hsia",
         date: "Apr 5",
         read: "2 min read",
+        image: "/assets/archive/blogs/01.webp",
         excerpt:
           "As the usage of artificial intelligence has grown exponentially, concerns have been raised over the ethical usage of AI. It has been widely accepted that bias exists in AI and impacts outcomes. Since the early days of development, concerns have been raised — such as when AI labeled African American men as “Primates.” One of the fundamental issues is data collection and labeling.",
       },
@@ -300,6 +297,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         author: "Anay Mehta",
         date: "Jan 30",
         read: "2 min read",
+        image: "/assets/archive/blogs/02.webp",
         excerpt:
           "Artificial intelligence researchers at Anthropic recently published a study exploring what they call “agentic misalignment” — the idea that LLMs deployed with complete autonomy might behave like insider threats within organizations and serve their own purposes. In simulations, they tested 16 major models from several developers by giving them business objectives and then introducing scenarios where the model either succeeds or is compromised.",
       },
@@ -312,7 +310,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     navLabel: "News",
     name: "ALPHAG3N in the News",
     tagline: "Talks, features, and interviews from around the world.",
-    hero: "/assets/archive/news-hero.jpg",
+    hero: "/assets/archive/news/hero.webp",
     items: [
       {
         title:
@@ -320,14 +318,13 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         location: "Seoul, South Korea",
         date: "June 29th, 2023",
         body: "TheWaveSeoul is a premier tech conference in Seoul, South Korea for those interested in the latest advancements in future technology — especially Web3 and AI. Joshua Koo, founder and lead of ALPHAG3N, participated as the only high-schooler, presenting on how the MZ and younger generations are reacting to technologies such as Web3 and AI. Joshua had roughly 35 minutes to present to around 200 participants, ranging from entrepreneurs to news reporters to prominent figures in the Web3 and AI industries.",
-        images: ["/assets/archive/news-1.png", "/assets/archive/news-2.png"],
       },
       {
         title: "TheMiilk Interview",
         body: "Joshua Koo, founder and lead of ALPHAG3N, was interviewed by TheMiilk, a Silicon Valley–based digital media platform. Following a deep dive into his background as a student and tech enthusiast, he shared his thoughts on the current scene in AI and Web3 and the impact it will have on the younger, future generation.",
-        images: ["/assets/archive/news-3.jpg", "/assets/archive/news-4.jpg"],
       },
     ],
+    gallery: g("news", 13),
   },
 };
 
