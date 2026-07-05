@@ -6,16 +6,15 @@ type Part = { text: string; className?: string };
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.05, delayChildren: 0.04 } },
 };
 
 const word: Variants = {
-  hidden: { opacity: 0, y: "0.5em", filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 14 },
   show: {
     opacity: 1,
-    y: "0em",
-    filter: "blur(0px)",
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -29,7 +28,6 @@ export default function AnimatedHeading({
   as?: "h1" | "h2" | "h3";
 }) {
   const reduce = useReducedMotion();
-  const MotionTag = motion[as] as typeof motion.h2;
 
   if (reduce) {
     const Tag = as;
@@ -44,6 +42,8 @@ export default function AnimatedHeading({
     );
   }
 
+  const MotionTag = motion[as] as typeof motion.h2;
+
   return (
     <MotionTag
       className={className}
@@ -53,17 +53,18 @@ export default function AnimatedHeading({
       viewport={{ once: true, margin: "-80px" }}
     >
       {parts.map((part, pi) =>
-        part.text.split(" ").map((w, wi) => (
-          <span
-            key={`${pi}-${wi}`}
-            className={`inline-block overflow-hidden ${part.className ?? ""}`}
-          >
-            <motion.span variants={word} className="inline-block">
+        part.text
+          .split(" ")
+          .filter(Boolean)
+          .map((w, wi) => (
+            <motion.span
+              key={`${pi}-${wi}`}
+              variants={word}
+              className={`mr-[0.26em] inline-block ${part.className ?? ""}`}
+            >
               {w}
             </motion.span>
-            {" "}
-          </span>
-        ))
+          ))
       )}
     </MotionTag>
   );
