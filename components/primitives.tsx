@@ -29,13 +29,12 @@ export function Reveal({
   as?: "div" | "section" | "span" | "li" | "h2" | "p";
   once?: boolean;
 }) {
-  const reduce = useReducedMotion();
   const MotionTag = motion[as] as typeof motion.div;
   return (
     <MotionTag
       className={className}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y }}
-      whileInView={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-80px" }}
       transition={{ duration: 0.7, ease: easeOut, delay }}
     >

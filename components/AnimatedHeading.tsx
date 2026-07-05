@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 type Part = { text: string; className?: string };
 
@@ -18,6 +18,8 @@ const word: Variants = {
   },
 };
 
+// Always renders the same DOM on server and client (identical per-word spans).
+// Reduced motion is handled globally by <MotionConfig reducedMotion="user">.
 export default function AnimatedHeading({
   parts,
   className = "",
@@ -27,21 +29,6 @@ export default function AnimatedHeading({
   className?: string;
   as?: "h1" | "h2" | "h3";
 }) {
-  const reduce = useReducedMotion();
-
-  if (reduce) {
-    const Tag = as;
-    return (
-      <Tag className={className}>
-        {parts.map((p, i) => (
-          <span key={i} className={p.className}>
-            {p.text}
-          </span>
-        ))}
-      </Tag>
-    );
-  }
-
   const MotionTag = motion[as] as typeof motion.h2;
 
   return (
