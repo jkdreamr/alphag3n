@@ -5,16 +5,39 @@ import { Reveal, Kicker } from "./primitives";
 import AnimatedHeading from "./AnimatedHeading";
 import { SPONSORS } from "./data";
 
+function MithrilMark() {
+  return (
+    <div className="flex items-center gap-2 text-[#17171a]">
+      <svg viewBox="0 0 40 40" className="h-7 w-7 flex-none" aria-hidden>
+        <g stroke="#17171a" strokeWidth="2.6" strokeLinecap="round">
+          <line x1="20" y1="6" x2="20" y2="34" />
+          <line x1="6" y1="20" x2="34" y2="20" />
+          <line x1="10.1" y1="10.1" x2="29.9" y2="29.9" />
+          <line x1="29.9" y1="10.1" x2="10.1" y2="29.9" />
+        </g>
+        <circle cx="30.5" cy="10.5" r="3.1" fill="#F5391E" />
+      </svg>
+      <span className="font-display text-[1.35rem] font-700 tracking-[0.02em]">
+        MITHRIL
+      </span>
+    </div>
+  );
+}
+
 function LogoTile({ s }: { s: (typeof SPONSORS)[number] }) {
   return (
     <div className="group mx-3 flex h-24 w-48 flex-none items-center justify-center rounded-2xl border border-white/10 bg-white/[0.94] px-6 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.6)] transition-all duration-300 hover:-translate-y-1 hover:border-electric-cyan/50 hover:shadow-[0_16px_40px_-16px_rgba(56,189,248,0.5)]">
-      <Image
-        src={s.src}
-        alt={`${s.name} logo`}
-        width={180}
-        height={70}
-        className="max-h-14 w-auto object-contain grayscale-[0.15] transition-all duration-300 group-hover:grayscale-0"
-      />
+      {s.name === "Mithril" ? (
+        <MithrilMark />
+      ) : (
+        <Image
+          src={s.src}
+          alt={`${s.name} logo`}
+          width={180}
+          height={70}
+          className="max-h-14 w-auto object-contain grayscale-[0.15] transition-all duration-300 group-hover:grayscale-0"
+        />
+      )}
     </div>
   );
 }

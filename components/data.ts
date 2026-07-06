@@ -1,6 +1,7 @@
 // All content copied verbatim from alphag3n.com
 
 export const LINKS = {
+  apply: "https://luma.com/2hi73qia",
   applyHackathon: "https://luma.com/ml7emv1r",
   stanford: "https://www.alphag3n.com/stanford",
   youtube: "https://www.youtube.com/@alphag3n",
@@ -67,6 +68,7 @@ export const STATS = [
 ];
 
 export const SPONSORS = [
+  { name: "Mithril", src: "" },
   { name: "JetLearn", src: "/assets/img-db3e2.png" },
   { name: "Coinbase", src: "/assets/sp-19acf.png" },
   { name: "Solana Foundation", src: "/assets/sp-3cac5.png" },

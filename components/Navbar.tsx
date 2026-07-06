@@ -153,7 +153,7 @@ export default function Navbar() {
 
             <div className="hidden items-center gap-3 lg:flex">
               <a
-                href={LINKS.applyHackathon}
+                href={LINKS.apply}
                 target="_blank"
                 rel="noreferrer"
                 className="btn-primary text-sm"
@@ -229,7 +229,7 @@ export default function Navbar() {
                 ))}
               </div>
               <a
-                href={LINKS.applyHackathon}
+                href={LINKS.apply}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
