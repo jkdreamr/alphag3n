@@ -132,15 +132,10 @@ function BackBar() {
           Back to home
         </Link>
         <Magnetic>
-          <a
-            href={LINKS.discord}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary text-sm"
-          >
+          <Link href={LINKS.join} className="btn-primary text-sm">
             Join the Community
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </Link>
         </Magnetic>
       </div>
     </div>

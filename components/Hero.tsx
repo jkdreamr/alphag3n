@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import ParticleField from "./ParticleField";
 import { Aurora, Magnetic } from "./effects";
 import { LINKS } from "./data";
@@ -91,15 +92,10 @@ export default function Hero() {
           className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
         >
           <Magnetic>
-            <a
-              href={LINKS.discord}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary w-full sm:w-auto"
-            >
+            <Link href={LINKS.join} className="btn-primary w-full sm:w-auto">
               Join the Community
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </Magnetic>
           <Magnetic>
             <a href="#events" className="btn-ghost w-full sm:w-auto">

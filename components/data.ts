@@ -1,6 +1,7 @@
 // All content copied verbatim from alphag3n.com
 
 export const LINKS = {
+  join: "/join",
   apply: "https://luma.com/2hi73qia",
   applyHackathon: "https://luma.com/ml7emv1r",
   stanford: "https://www.alphag3n.com/stanford",

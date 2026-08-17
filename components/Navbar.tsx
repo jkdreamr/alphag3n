@@ -152,14 +152,9 @@ export default function Navbar() {
             </div>
 
             <div className="hidden items-center gap-3 lg:flex">
-              <a
-                href={LINKS.apply}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary text-sm"
-              >
-                Apply Now
-              </a>
+              <Link href={LINKS.join} className="btn-primary text-sm">
+                Become a Member
+              </Link>
             </div>
 
             {/* mobile toggle */}
@@ -228,15 +223,13 @@ export default function Navbar() {
                   </Link>
                 ))}
               </div>
-              <a
-                href={LINKS.apply}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href={LINKS.join}
                 onClick={() => setOpen(false)}
                 className="btn-primary mt-8"
               >
-                Apply Now
-              </a>
+                Become a Member
+              </Link>
             </div>
           </motion.div>
         )}
