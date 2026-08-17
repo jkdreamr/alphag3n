@@ -2,10 +2,9 @@
 
 import { Reveal, Kicker } from "./primitives";
 import { LINKS } from "./data";
-import { SOCIALS, Phone, Mail, Pin } from "./icons";
+import { SOCIALS, Mail, Pin } from "./icons";
 
 const CONTACT = [
-  { Icon: Phone, label: "Phone", value: LINKS.phone, href: `tel:${LINKS.phone.replace(/\s/g, "")}` },
   { Icon: Mail, label: "Email", value: LINKS.email, href: `mailto:${LINKS.email}` },
   { Icon: Pin, label: "Location", value: "San Francisco, California", href: null },
 ];

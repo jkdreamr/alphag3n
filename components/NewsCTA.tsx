@@ -77,8 +77,8 @@ export default function NewsCTA() {
                     <Magnetic className="mt-6 self-start">
                       <a
                         href={ev.cta.href}
-                        target="_blank"
-                        rel="noreferrer"
+                        target={ev.cta.href.startsWith("http") ? "_blank" : undefined}
+                        rel={ev.cta.href.startsWith("http") ? "noreferrer" : undefined}
                         className={
                           ev.status === "Upcoming"
                             ? "btn-primary text-sm"

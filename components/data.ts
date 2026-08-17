@@ -10,7 +10,6 @@ export const LINKS = {
   tiktok: "https://www.tiktok.com/@alphag3n",
   site: "https://www.alphag3n.com",
   email: "alphag3n.s@gmail.com",
-  phone: "650 304 5958",
 };
 
 export const NAV_SECTIONS = [
@@ -90,22 +89,29 @@ export const TEAM = [
   { name: "Aidin Salimi", role: "CFO & CTO", image: "/assets/team-aidin.jpg" },
 ];
 
-// Event highlights — HAI Hackathon has concluded; Taiwan Conference is upcoming
-export const EVENTS = [
+// Event highlights — completed 2026 events
+export const EVENTS: {
+  id: string;
+  tag: string;
+  status: "Completed" | "Upcoming";
+  title: string;
+  body: string;
+  cta: { label: string; href: string };
+}[] = [
   {
     id: "hai-2026",
     tag: "Recap · 2026",
-    status: "Completed" as const,
+    status: "Completed",
     title: "HAI Hackathon 2026",
     body: "Our 2026 HAI Hackathon brought together the sharpest high-school builders across Web3 and AI for a weekend of hacking, mentorship, and demos. Huge thanks to everyone who built with us — the projects were incredible.",
     cta: { label: "View the Recap", href: LINKS.applyHackathon },
   },
   {
     id: "taiwan-2026",
-    tag: "Flagship Event",
-    status: "Upcoming" as const,
+    tag: "Recap · 2026",
+    status: "Completed",
     title: "Taiwan Conference 2026",
-    body: "Our next flagship Web3 and AI conference heads to Taiwan. Expect prominent speakers, hands-on workshops, and a global community of young builders. Details drop soon — join the community to be first to know.",
-    cta: { label: "Get Notified", href: LINKS.discord },
+    body: "ALPHAG3N's 2026 Taiwan Conference brought together 99 attendees for a one-day exploration of Physical AI, featuring guest speakers, workshops, networking, and discussions about how AI is moving into robotics, hardware, sensors, and intelligent systems.",
+    cta: { label: "View the Recap", href: "/taiwan-conference-2026" },
   },
 ];

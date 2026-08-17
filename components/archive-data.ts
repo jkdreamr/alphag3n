@@ -90,12 +90,50 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     slug: "taiwan-conference-2026",
     navLabel: "Taiwan Conference 2026",
     name: "ALPHAG3N Conference @ Taiwan",
-    tagline: "An immersive Physical AI conference for Taiwanese high school students.",
-    status: "Upcoming",
+    tagline:
+      "A one-day Physical AI conference that brought together high school students in Taiwan to explore how artificial intelligence is moving beyond screens and into the physical world.",
+    status: "Completed",
     date: "August 9th, 2026 · 10 AM – 5 PM TST",
-    location: "Taipei FuHsing Private School",
+    location: "Taipei Fuhsing Private School, Taipei, Taiwan",
     hero: "/assets/archive/taiwan-conference-2026/hero.webp",
-    comingSoon: true,
+    partner: "In partnership with Taipei Fuhsing Private School",
+    intro:
+      "ALPHAG3N partnered with Taipei Fuhsing Private School to bring high school students together for a one-day conference focused on Physical AI. The event welcomed students interested in artificial intelligence, technology, entrepreneurship, and the future, with no prior technical experience required. Across presentations, workshops, and conversations, attendees explored how young builders can take part in the next wave of technology.",
+    stats: [
+      { value: "99", label: "Attendees" },
+      { value: "1 Day", label: "Conference" },
+      { value: "Physical AI", label: "Theme" },
+      { value: "Taipei", label: "Taiwan" },
+    ],
+    highlights: [
+      {
+        title: "Physical AI",
+        body: "Students explored how AI connects with the physical world through robotics, hardware, sensors, automation, and intelligent systems.",
+      },
+      {
+        title: "Guest Speakers & Presentation",
+        body: "Guest speakers shared perspectives on AI, technology, entrepreneurship, and the future, alongside a presentation from the ALPHAG3N team.",
+      },
+      {
+        title: "Hands-on Workshops",
+        body: "ALPHAG3N members led workshops that helped students engage directly with the ideas introduced throughout the conference.",
+      },
+      {
+        title: "Community & Networking",
+        body: "Attendees met other curious students interested in technology, AI, and building new things, creating space for conversation and new connections.",
+      },
+      {
+        title: "U.S. College Perspectives",
+        body: "A special Zoom session connected attendees with students and ALPHAG3N alumni who shared experiences and perspectives related to American colleges.",
+      },
+    ],
+    extraSections: [
+      {
+        kicker: "The Theme",
+        title: "What is Physical AI?",
+        body: "Physical AI describes artificial intelligence that can interact with and respond to the real world. By combining software with robotics, hardware, sensors, automation, and other intelligent systems, it extends AI beyond screens and into the environments where people live and work. The conference gave students an accessible introduction to why this shift matters and how they can participate in shaping it.",
+      },
+    ],
   },
 
   "stanford-hackathon-2026": {

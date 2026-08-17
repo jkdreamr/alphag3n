@@ -26,8 +26,8 @@ export default function Community() {
             </Reveal>
             <Reveal delay={0.16}>
               <p className="mx-auto mt-5 max-w-md text-white/60">
-                Connect with members, get event announcements, and be first to hear
-                about the Taiwan Conference 2026.
+                Connect with members, meet other young builders, and stay updated on
+                upcoming ALPHAG3N events and opportunities.
               </p>
             </Reveal>
             <Reveal delay={0.24} className="flex justify-center">

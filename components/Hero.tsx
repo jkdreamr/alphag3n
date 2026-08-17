@@ -38,14 +38,17 @@ export default function Hero() {
         {/* announcement pill */}
         <motion.a
           {...rise(0.05)}
-          href="#events"
+          href="/taiwan-conference-2026"
           className="group ring-gradient mx-auto inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 py-1.5 pl-2 pr-4 text-sm text-white/80 backdrop-blur-md transition-colors hover:text-white"
         >
           <span className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-brand to-electric px-2.5 py-1 text-[11px] font-700 uppercase tracking-wide text-white">
             <Sparkle className="h-3 w-3" />
-            Soon
+            Recap
           </span>
-          Taiwan Conference 2026 — coming soon
+          <span className="sm:hidden">Taiwan Conference 2026 recap</span>
+          <span className="hidden sm:inline">
+            Taiwan Conference 2026 — see the event recap
+          </span>
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </motion.a>
 
