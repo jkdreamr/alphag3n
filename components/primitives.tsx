@@ -79,10 +79,12 @@ export function StaggerGroup({
 
 export function Counter({
   to,
+  prefix = "",
   suffix = "",
   duration = 1.8,
 }: {
   to: number;
+  prefix?: string;
   suffix?: string;
   duration?: number;
 }) {
@@ -111,6 +113,7 @@ export function Counter({
 
   return (
     <span ref={ref}>
+      {prefix}
       {display}
       {suffix}
     </span>

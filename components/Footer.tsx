@@ -110,7 +110,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <p className="font-mono text-xs text-white/40">© 2025 by ALPHAG3N</p>
+          <p className="font-mono text-xs text-white/40">© 2026 by ALPHAG3N</p>
         </div>
       </div>
     </footer>

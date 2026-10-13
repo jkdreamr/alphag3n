@@ -11,6 +11,12 @@ const g = (slug: string, n: number) =>
 const pick = (slug: string, nums: number[]) =>
   nums.map((n) => `/assets/archive/${slug}/${String(n).padStart(2, "0")}.webp`);
 
+const jpgGallery = (slug: string, n: number) =>
+  Array.from(
+    { length: n },
+    (_, i) => `/assets/archive/${slug}/${String(i + 1).padStart(2, "0")}.jpg`
+  );
+
 export type Person = { name: string; bio: string; image: string };
 
 export type EventPage = {
@@ -98,9 +104,9 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     hero: "/assets/archive/taiwan-conference-2026/hero.webp",
     partner: "In partnership with Taipei Fuhsing Private School",
     intro:
-      "ALPHAG3N partnered with Taipei Fuhsing Private School to bring high school students together for a one-day conference focused on Physical AI. The event welcomed students interested in artificial intelligence, technology, entrepreneurship, and the future, with no prior technical experience required. Across presentations, workshops, and conversations, attendees explored how young builders can take part in the next wave of technology.",
+      "ALPHAG3N partnered with Taipei Fuhsing Private School to bring 120+ high school students together for a one-day conference focused on Physical AI. The event welcomed students interested in artificial intelligence, technology, entrepreneurship, and the future, with no prior technical experience required. Across presentations, workshops, and conversations, attendees explored how young builders can take part in the next wave of technology.",
     stats: [
-      { value: "99", label: "Attendees" },
+      { value: "120+", label: "Participants" },
       { value: "1 Day", label: "Conference" },
       { value: "Physical AI", label: "Theme" },
       { value: "Taipei", label: "Taiwan" },
@@ -112,7 +118,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
       },
       {
         title: "Guest Speakers & Presentation",
-        body: "Guest speakers shared perspectives on AI, technology, entrepreneurship, and the future, alongside a presentation from the ALPHAG3N team.",
+        body: "Guest speakers from NVIDIA, Stanford, Voltai, and more shared perspectives on AI, technology, entrepreneurship, and the future alongside a presentation from the ALPHAG3N team.",
       },
       {
         title: "Hands-on Workshops",
@@ -122,10 +128,6 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         title: "Community & Networking",
         body: "Attendees met other curious students interested in technology, AI, and building new things, creating space for conversation and new connections.",
       },
-      {
-        title: "U.S. College Perspectives",
-        body: "A special Zoom session connected attendees with students and ALPHAG3N alumni who shared experiences and perspectives related to American colleges.",
-      },
     ],
     extraSections: [
       {
@@ -134,6 +136,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         body: "Physical AI describes artificial intelligence that can interact with and respond to the real world. By combining software with robotics, hardware, sensors, automation, and other intelligent systems, it extends AI beyond screens and into the environments where people live and work. The conference gave students an accessible introduction to why this shift matters and how they can participate in shaping it.",
       },
     ],
+    gallery: jpgGallery("taiwan-conference-2026", 16),
   },
 
   "stanford-hackathon-2026": {
@@ -154,6 +157,12 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     eligibility: [
       "All participants must be current high school students (Grades 9–12)",
       "Teams must be comprised of 3–5 members",
+    ],
+    stats: [
+      { value: "100+", label: "Participants" },
+      { value: "2 Days", label: "Hackathon" },
+      { value: "$5,000", label: "In Prizes" },
+      { value: "Stanford", label: "University" },
     ],
     schedule: [
       {
@@ -305,7 +314,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
       },
     ],
     stats: [
-      { value: "48", label: "Attendees" },
+      { value: "60+", label: "Participants" },
       {
         value: "15",
         label: "Japanese student volunteers helping with translation and session transitions",
@@ -392,6 +401,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
         body: "Discussion on the usefulness of AI and AI ethics in the lives of U.S. high school and college students.",
       },
     ],
+    stats: [{ value: "100+", label: "Members" }],
     gallery: g("seoul-conference-2024", 24),
   },
 
@@ -404,6 +414,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     date: "August 8th, 2023",
     location: "Seoul National University",
     hero: "/assets/archive/snu-conference-2023/hero.webp",
+    stats: [{ value: "50+", label: "Participants" }],
     gallery: g("snu-conference-2023", 3),
   },
 
@@ -419,6 +430,7 @@ export const ARCHIVE: Record<string, ArchivePage> = {
     hero: "/assets/archive/stanford-conference-2023/hero.webp",
     intro:
       "In-person participants will have the role of being ALPHAG3N's first “ambassadors”. After the conference, it will be their job to help grow the ALPHAG3N community. Participants will receive silver-tier NFTs for free—more details will be sent out before the conference. We will be giving out a lot of merch (t-shirts, hats, tote bags, stickers, and more). Participants in the workshop (required) at the end of the conference will receive participation prizes and will also gain special access to a future ALPHAG3N-led hackathon with big prizes. You will receive many updates once you have signed up.",
+    stats: [{ value: "100+", label: "Participants" }],
     prize: {
       amount: "$1000 in Raffle Prizes",
       note: "Ten Winners · $100 Gift Cards — plus free lunch & snacks and Free T-Shirts, Hats, Tote-Bags, and Stickers.",

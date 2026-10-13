@@ -56,7 +56,7 @@ export default function Stats() {
                 <motion.div key={s.label} variants={staggerItem}>
                   <SpotlightCard className="glass ring-gradient h-full rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1">
                     <div className="font-display text-[clamp(2rem,5vw,3rem)] font-700 leading-none gradient-text-cyan">
-                      <Counter to={s.value} suffix={s.suffix} />
+                      <Counter to={s.value} prefix={s.prefix} suffix={s.suffix} />
                     </div>
                     <div className="mt-3 text-xs uppercase tracking-[0.18em] text-white/50">
                       {s.label}

@@ -29,13 +29,13 @@ export default function Team() {
           />
           <Reveal delay={0.12}>
             <p className="mt-5 text-white/55">
-              A 9-person executive team of high schoolers building the world&apos;s
-              largest Web3 &amp; AI community.
+              A student-led founding team building the world&apos;s largest Web3
+              &amp; AI community.
             </p>
           </Reveal>
         </div>
 
-        <StaggerGroup className="mx-auto mt-14 grid max-w-4xl gap-6 sm:grid-cols-3">
+        <StaggerGroup className="mx-auto mt-14 grid max-w-3xl gap-6 sm:grid-cols-2">
           {TEAM.map((m, i) => (
             <motion.div key={m.name} variants={staggerItem}>
               <Tilt max={9} className="h-full">

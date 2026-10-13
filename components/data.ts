@@ -61,10 +61,10 @@ export const SERVICES = [
 ];
 
 export const STATS = [
-  { value: 500, suffix: "+", label: "Community Members" },
-  { value: 11, suffix: "", label: "Sponsors" },
-  { value: 11, suffix: "k+", label: "Raised" },
-  { value: 9, suffix: "", label: "Executive Team Members" },
+  { value: 600, prefix: "", suffix: "+", label: "Community Members" },
+  { value: 11, prefix: "", suffix: "", label: "Sponsors" },
+  { value: 60, prefix: "$", suffix: "k+", label: "Sponsorships Raised" },
+  { value: 9, prefix: "", suffix: "", label: "Executive Team Members" },
 ];
 
 export const SPONSORS = [
@@ -85,9 +85,8 @@ export const SPONSORS = [
 ];
 
 export const TEAM = [
-  { name: "Daniel Koo", role: "Founder & CEO", image: "/assets/team-daniel.jpg" },
-  { name: "Shayan Salimi", role: "COO", image: "/assets/team-shayan.png" },
-  { name: "Aidin Salimi", role: "CFO & CTO", image: "/assets/team-aidin.jpg" },
+  { name: "Daniel Koo", role: "CEO & Co-Founder", image: "/assets/team-daniel.jpg" },
+  { name: "Joshua Koo", role: "Co-Founder", image: "/assets/team-joshua.jpg" },
 ];
 
 // Event highlights — completed 2026 events
@@ -112,7 +111,7 @@ export const EVENTS: {
     tag: "Recap · 2026",
     status: "Completed",
     title: "Taiwan Conference 2026",
-    body: "ALPHAG3N's 2026 Taiwan Conference brought together 99 attendees for a one-day exploration of Physical AI, featuring guest speakers, workshops, networking, and discussions about how AI is moving into robotics, hardware, sensors, and intelligent systems.",
+    body: "ALPHAG3N's 2026 Taiwan Conference brought together 120+ participants for a one-day exploration of Physical AI, featuring guest speakers, workshops, networking, and discussions about how AI is moving into robotics, hardware, sensors, and intelligent systems.",
     cta: { label: "View the Recap", href: "/taiwan-conference-2026" },
   },
 ];
