@@ -85,7 +85,7 @@ export const SPONSORS = [
 ];
 
 export const TEAM = [
-  { name: "Daniel Koo", role: "CEO & Co-Founder", image: "/assets/team-daniel.jpg" },
+  { name: "Daniel Koo", role: "CEO & Co-Founder", image: "/assets/team-daniel-v2.jpg" },
   { name: "Joshua Koo", role: "Co-Founder", image: "/assets/team-joshua.jpg" },
 ];
 
