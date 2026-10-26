@@ -87,6 +87,13 @@ export const SPONSORS = [
 export const TEAM = [
   { name: "Daniel Koo", role: "CEO & Co-Founder", image: "/assets/team-daniel-v2.jpg" },
   { name: "Joshua Koo", role: "Co-Founder", image: "/assets/team-joshua.jpg" },
+  { name: "Aidin Salimi", role: "Former CEO", image: "/assets/team-aidin.jpg" },
+  { name: "Shayan Salimi", role: "Former COO", image: "/assets/team-shayan.png" },
+  {
+    name: "Callan Chu",
+    role: "Former Head of Sponsorship and Outreach",
+    image: "/assets/team-callan.png",
+  },
 ];
 
 // Event highlights — completed 2026 events
