@@ -64,7 +64,7 @@ export const STATS = [
   { value: 600, prefix: "", suffix: "+", label: "Community Members" },
   { value: 11, prefix: "", suffix: "", label: "Sponsors" },
   { value: 60, prefix: "$", suffix: "k+", label: "Sponsorships Raised" },
-  { value: 9, prefix: "", suffix: "", label: "Executive Team Members" },
+  { value: 2, prefix: "", suffix: "", label: "Executive Team Members" },
 ];
 
 export const SPONSORS = [
@@ -84,16 +84,59 @@ export const SPONSORS = [
   { name: "USA Artificial Intelligence Olympiad", src: "/assets/sp-3a40f.png" },
 ];
 
-export const TEAM = [
-  { name: "Daniel Koo", role: "CEO & Co-Founder", image: "/assets/team-daniel-v2.jpg" },
-  { name: "Joshua Koo", role: "Co-Founder", image: "/assets/team-joshua.jpg" },
-  { name: "Aidin Salimi", role: "Former CFO", image: "/assets/team-aidin.jpg" },
-  { name: "Shayan Salimi", role: "Former COO", image: "/assets/team-shayan.png" },
+export type TeamMember = {
+  name?: string;
+  role?: string;
+  image: string;
+};
+
+export const EXECUTIVE_TEAM: TeamMember[] = [
   {
-    name: "Callan Chu",
-    role: "Former Head of Sponsorship and Outreach",
-    image: "/assets/team-callan.png",
+    name: "Daniel Koo",
+    role: "CEO & Co-Founder",
+    image: "/assets/team-daniel-v2.jpg",
   },
+  {
+    name: "Joshua Koo",
+    role: "Co-Founder & Advisor",
+    image: "/assets/team-joshua.jpg",
+  },
+];
+
+export const PREVIOUS_TEAM: TeamMember[] = [
+  {
+    name: "Aidin Salimi",
+    role: "CFO & CTO",
+    image: "/assets/team-aidin.jpg",
+  },
+  {
+    name: "Shayan Salimi",
+    role: "COO",
+    image: "/assets/team-shayan.png",
+  },
+  {
+    name: "Lachlan Chu",
+    role: "COO",
+    image: "/assets/team-lachlan.jpg",
+  },
+  {
+    name: "Kian Salimi",
+    role: "CTO",
+    image: "/assets/team-kian.jpg",
+  },
+  {
+    name: "Max Spivakovsky",
+    role: "CFO",
+    image: "/assets/team-max.jpg",
+  },
+  { image: "/assets/team-previous-1.jpg" },
+  { image: "/assets/team-previous-2.jpg" },
+  { image: "/assets/team-previous-3.jpg" },
+];
+
+export const UPCOMING_TEAM: TeamMember[] = [
+  { image: "/assets/team-upcoming-1.jpg" },
+  { image: "/assets/team-upcoming-2.jpg" },
 ];
 
 // Event highlights — completed 2026 events
