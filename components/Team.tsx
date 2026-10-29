@@ -116,7 +116,7 @@ export default function Team() {
           <div>
             <Reveal>
               <h3 className="text-center font-display text-2xl font-700 text-white">
-                Previous Team
+                Previous
               </h3>
             </Reveal>
             <TeamGrid members={PREVIOUS_TEAM} label="Previous team" />
@@ -125,7 +125,7 @@ export default function Team() {
           <div>
             <Reveal>
               <h3 className="text-center font-display text-2xl font-700 text-white">
-                Upcoming Team
+                Upcoming
               </h3>
             </Reveal>
             <TeamGrid members={UPCOMING_TEAM} label="Upcoming team" compact />
