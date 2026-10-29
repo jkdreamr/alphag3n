@@ -64,7 +64,7 @@ export const STATS = [
   { value: 600, prefix: "", suffix: "+", label: "Community Members" },
   { value: 11, prefix: "", suffix: "", label: "Sponsors" },
   { value: 60, prefix: "$", suffix: "k+", label: "Sponsorships Raised" },
-  { value: 2, prefix: "", suffix: "", label: "Executive Team Members" },
+  { value: 15, prefix: "", suffix: "", label: "Executive Team Members" },
 ];
 
 export const SPONSORS = [
