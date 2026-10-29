@@ -129,6 +129,11 @@ export const PREVIOUS_TEAM: TeamMember[] = [
     role: "CFO",
     image: "/assets/team-max.jpg",
   },
+  {
+    name: "Callan Chu",
+    role: "Head of Sponsorship and Outreach",
+    image: "/assets/team-callan.png",
+  },
   { image: "/assets/team-previous-1.jpg" },
   { image: "/assets/team-previous-2.jpg" },
   { image: "/assets/team-previous-3.jpg" },
