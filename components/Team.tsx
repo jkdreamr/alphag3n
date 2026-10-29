@@ -23,7 +23,7 @@ function TeamGrid({
 }) {
   return (
     <StaggerGroup
-      className={`mx-auto mt-8 grid gap-6 sm:grid-cols-2 ${
+      className={`mx-auto mt-8 grid items-start gap-6 sm:grid-cols-2 ${
         compact ? "max-w-3xl" : "max-w-5xl lg:grid-cols-3 xl:grid-cols-4"
       }`}
     >
@@ -32,8 +32,8 @@ function TeamGrid({
 
         return (
           <motion.div key={`${member.image}-${index}`} variants={staggerItem}>
-            <Tilt max={9} className="h-full">
-              <SpotlightCard className="glass ring-gradient h-full rounded-3xl p-6 text-center">
+            <Tilt max={9}>
+              <SpotlightCard className="glass ring-gradient rounded-3xl p-6 text-center">
                 <div
                   className="relative mx-auto w-fit"
                   style={{ transform: "translateZ(40px)" }}
